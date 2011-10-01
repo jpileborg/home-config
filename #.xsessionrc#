@@ -65,7 +65,7 @@ echo "TODO"
 #exec update-notifier &
 
 echo "starting awesome..."
-exec awesome
+exec awesome &
 
 echo "all done!"
 echo ""

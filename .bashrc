@@ -108,29 +108,29 @@ export LESSCHARSET="utf-8"
 
 export CVS_RSH=ssh
 # export CVSROOT=":ext:dev-cvs.se.axis.com:/usr/local/cvs/linux"
-export AXIS_DEVELOPER=y
+# export AXIS_DEVELOPER=y
 export EDITOR=nano
 export GIT_EDITOR=nano
 
-#[ -f ~/products/camera/P7214/init_env ] && . ~/products/camera/P7214/init_env
+# [ -f ~/products/camera/P7214/init_env ] && . ~/products/camera/P7214/init_env
 
-function chp() {
-    [ -d ~/products/$1 ] || (echo "No such project: $1"; return 1)
-    cd ~/products/$1 || return 1
+# function chp() {
+#     [ -d ~/products/$1 ] || (echo "No such project: $1"; return 1)
+#     cd ~/products/$1 || return 1
+#
+#     # TODO: Clean up the PATH (in a bash-compatible way, not zsh'ish like this
+#     #newpath=()
+#     #for p in $path; do
+#     #  (  echo $p | grep -q $1 ) || newpath=($newpath $p)
+#     #done
+#     #export PATH=${(j.:.)newpath}
+#
+#     export AXIS_TOP_DIR=~/products/$1
+#     [ -f ./init_env ] && source ./init_env
+#     export PATH=$PATH:$AXIS_TOP_DIR/build_env/bin
+# }
 
-    # TODO: Clean up the PATH (in a bash-compatible way, not zsh'ish like this
-    #newpath=()
-    #for p in $path; do
-    #  (  echo $p | grep -q $1 ) || newpath=($newpath $p)
-    #done
-    #export PATH=${(j.:.)newpath}
+# complete -W "`find $HOME/products/*/* -maxdepth 0 -type d | cut -d '/' -f 5-6`" chp
 
-    export AXIS_TOP_DIR=~/products/$1
-    [ -f ./init_env ] && source ./init_env
-    export PATH=$PATH:$AXIS_TOP_DIR/build_env/bin
-}
-
-complete -W "`find $HOME/products/*/* -maxdepth 0 -type d | cut -d '/' -f 5-6`" chp
-
-export LESSOPEN="| /usr/bin/lesspipe %s";
-export LESSCLOSE="/usr/bin/lesspipe %s %s";
+# export LESSOPEN="| /usr/bin/lesspipe %s";
+# export LESSCLOSE="/usr/bin/lesspipe %s %s";

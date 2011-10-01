@@ -58,7 +58,7 @@ tokens = data.split()
 
 # clean up output with str_replace()
 print tokens[2].replace('(',''),tokens[3] 
-print tokens[4],tokens[5].replace(')','')
+print tokens[4],tokens[5].replace(")'])",'')
 print
 # close the mailbox
 server.close()

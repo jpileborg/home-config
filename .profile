@@ -4,6 +4,8 @@
 # see /usr/share/doc/bash/examples/startup-files for examples.
 # the files are located in the bash-doc package.
 
+# [ -f /etc/profile ] && . /etc/profile
+
 # the default umask is set in /etc/profile; for setting the umask
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
@@ -16,17 +18,16 @@ if [ -n "$BASH_VERSION" ]; then
     fi
 fi
 
-PATH=/bin:/sbin
-PATH=$PATH:/usr/bin:/usr/sbin
-PATH=$PATH:/usr/local/bin:/usr/local/sbin
+# PATH=/bin:/sbin
+# PATH=$PATH:/usr/bin:/usr/sbin
+# PATH=$PATH:/usr/local/bin:/usr/local/sbin
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
     PATH="$PATH:$HOME/bin"
 fi
+PATH=$PATH:/sbin:/usr/sbin:/usr/local/sbin
 export PATH
 
 export LANGUAGE="en_US:en"
 export LC_MESSAGES="en_US.UTF-8"
 export LANG="sv_SE.UTF-8"
-
-export http_proxy="http://wwwproxy.se.axis.se:3128/"

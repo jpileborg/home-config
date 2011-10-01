@@ -61,17 +61,17 @@ tags = {}
 
 -- First screen
 tags[1] = awful.tag(
-    { "emacs", "web", "mail", "gitk", "vbox", "terminals", 7, 8, 9 },
+    { "web", "emacs", "terminals", "games", "vbox", 6, 7, 8, 9 },
     1,
-    { layouts[11], layouts[11], layouts[11], layouts[ 7], layouts[ 7],
-	  layouts[ 5], layouts[ 1], layouts[ 1], layouts[ 1] }
+    { layouts[11], layouts[11], layouts[ 2], layouts[11], layouts[11],
+	  layouts[ 1], layouts[ 1], layouts[ 1], layouts[ 1] }
 )
 
 -- Second screen
 tags[2] = awful.tag(
-    { "build", "web", "calendar", "terminals", "spotify", 6, 7, 8, "top" },
+    { "mail", "build", "terminals", "spotify", 5, 6, 7, 8, "top" },
     2,
-    { layouts[ 2], layouts[11], layouts[11], layouts[ 2], layouts[11],
+    { layouts[11], layouts[ 2], layouts[ 2], layouts[11], layouts[ 1],
       layouts[ 1], layouts[ 1], layouts[ 1], layouts[11] }
 )
 -- }}}
@@ -679,38 +679,31 @@ awful.rules.rules = {
                      buttons = clientbuttons,
 					 float = true } },
 
-    { rule = { class = "Google-chrome (/home/joachimp/.config/google-chrome)" },
-      properties = { tag = tags[2][2] } },
-    { rule = { class = "Google-chrome (/home/joachimp/.config/google-chrome-private)" },
-      properties = { tag = tags[1][2] } },
+    { rule = { class = "Chromium" },
+      properties = { tag = tags[1][1] } },
 
     { rule = { class = "Spotify" },
-      properties = { tag = tags[2][5] } },
+      properties = { tag = tags[2][4] } },
 
     { rule = { class = "Emacs", instance = "emacs" },
-      properties = { tag = tags[1][1] } },
-    { rule = { class = "Emacs", instance = "Calendar" },
-      properties = { tag = tags[2][3] } },
-
-    { rule = { class = "Evolution" },
-      properties = { tag = tags[1][3] } },
-
-    { rule = { class = "Gitk" },
-      properties = { tag = tags[1][4] } },
-    { rule = { class = "Gitg" },
-      properties = { tag = tags[1][4] } },
+      properties = { tag = tags[1][2] } },
+    -- { rule = { class = "Emacs", instance = "Calendar" },
+    --   properties = { tag = tags[2][3] } },
 
     { rule = { class = "URxvt", instance = "build" },
-      properties = { tag = tags[2][1] } },
+      properties = { tag = tags[2][2] } },
 
-    { rule = { class = "URxvt", instance = "terminal" },
-      properties = { tag = tags[2][4] } },
+    { rule = { class = "URxvt", instance = "terminal1" },
+      properties = { tag = tags[1][3] } },
+
+    { rule = { class = "URxvt", instance = "terminal2" },
+      properties = { tag = tags[2][3] } },
 
     { rule = { class = "URxvt", instance = "top" },
       properties = { tag = tags[2][9] } },
 
     { rule = { class = "URxvt", instance = "mail" },
-      properties = { tag = tags[1][3] } },
+      properties = { tag = tags[2][1] } },
 
     { rule = { class = "URxvt", instance = "normal" },
       properties = { float = true } },

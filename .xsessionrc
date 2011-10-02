@@ -43,8 +43,11 @@ exec urxvt -name terminal2 &
 echo "starting top..."
 exec urxvt -sb -name top -e "htop" &
 
-echo "starting alpine..."
-exec urxvt -sb -name mail -e "alpine" &
+# echo "starting alpine..."
+# exec urxvt -sb -name mail -e "alpine" &
+
+echo "starting ocedove..."
+icedove >/dev/null 2>&1 &
 
 echo "starting google chromium..."
 exec chromium >/dev/null 2>&1 &
@@ -53,8 +56,7 @@ echo "starting emacs..."
 exec emacs &
 
 echo "starting spotify..."
-echo "TODO"
-#exec spotify >/dev/null 2>&1 &
+exec spotify >/dev/null 2>&1 &
 
 echo "starting virtualbox..."
 echo "TODO"

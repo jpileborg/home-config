@@ -601,7 +601,14 @@ globalkeys = awful.util.table.join(
                                    mypromptbox[mouse.screen].widget,
                                    awful.util.eval, nil,
                                    awful.util.getdir("cache") .. "/history_eval")
-              end)
+              end),
+
+    awful.key({        }, "XF86AudioRaiseVolume", function() awful.util.spawn("amixer -q set Master 2+", false) end),
+    awful.key({        }, "XF86AudioLowerVolume", function() awful.util.spawn("amixer -q set Master 2-", false) end),
+    awful.key({        }, "XF86AudioMute"       , function() awful.util.spawn("amixer -q set Master toggle", false) end),
+    awful.key({        }, "XF86HomePage"        , function() awful.tag.viewonly(tags[1][1]) end),
+    awful.key({        }, "XF86Mail"            , function() awful.tag.viewonly(tags[2][1]) end)
+
 )
 
 clientkeys = awful.util.table.join(
@@ -702,7 +709,9 @@ awful.rules.rules = {
     { rule = { class = "URxvt", instance = "top" },
       properties = { tag = tags[2][9] } },
 
-    { rule = { class = "URxvt", instance = "mail" },
+    -- { rule = { class = "URxvt", instance = "mail" },
+    --   properties = { tag = tags[2][1] } },
+    { rule = { class = "Icedove" },
       properties = { tag = tags[2][1] } },
 
     { rule = { class = "URxvt", instance = "normal" },

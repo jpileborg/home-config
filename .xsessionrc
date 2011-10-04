@@ -60,11 +60,11 @@ echo "TODO"
 echo "starting emacs..."
 exec emacs &
 
-echo "starting spotify..."
-exec spotify >/dev/null 2>&1 &
+# echo "starting spotify..."
+# exec spotify >/dev/null 2>&1 &
 
-echo "starting virtualbox..."
-exec virtualbox >/dev/null 2>&1 &
+# echo "starting virtualbox..."
+# exec virtualbox >/dev/null 2>&1 &
 
 echo "starting update notification daemon..."
 echo "TODO"

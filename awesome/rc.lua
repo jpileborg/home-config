@@ -250,6 +250,11 @@ end
 
 mailwidget = widget({ type = "textbox" })
 mailwidget.text = get_mail_count()
+mailwidget:buttons(awful.util.table.join(
+					  awful.button({ }, 1, function () mailwidget.text = get_mail_count() end)
+			  ))
+
+
 mailwidgettimer = timer({ timeout = 60 })
 mailwidgettimer:add_signal("timeout", function() mailwidget.text = get_mail_count() end)
 mailwidgettimer:start()
@@ -399,7 +404,7 @@ home_p:set_vertical(true)
 home_p:set_background_color("#494B4F")
 home_p:set_border_color(nil)
 home_p:set_color("#a6e6a6")
-home_p:set_gradient_colors({ "#a6e6a6", "#a6c6a6", "#b6b6a6", "#e6a6a6", "#ff7676" })
+home_p:set_gradient_colors({ "#ff7676", "#e6a6a6", "#b6b6a6", "#a6c6a6", "#a6e6a6" })
 vicious.register(home_p, vicious.widgets.fs,
                  function (w, a)
                      return (100 - a["{/home used_p}"])

@@ -61,10 +61,10 @@ tags = {}
 
 -- First screen
 tags[1] = awful.tag(
-    { "web", "emacs", "terminals", "games", "vbox", 6, 7, 8, 9 },
+    { "web", "emacs", "terminals", "games", "vbox", 6, 7, 8, "trans" },
     1,
     { layouts[11], layouts[11], layouts[ 2], layouts[11], layouts[11],
-	  layouts[ 1], layouts[ 1], layouts[ 1], layouts[ 1] }
+	  layouts[ 1], layouts[ 1], layouts[ 1], layouts[11] }
 )
 
 -- Second screen
@@ -109,7 +109,7 @@ function clone(t)            -- return a copy of the table t
 end
 
 -- {{{ Wibox
-local function show_calendar(w)
+local function show_calendar()
     -- TODO: Integrate with emacs org-mode
     -- TODO: Highlight dates with org entries, different colors depending on
     --       the type and state of the 'event'
@@ -169,12 +169,14 @@ local function show_calendar(w)
             if weeks[i][j] == 0 then
                 s = s.."   "
             else
-                if ""..weeks[i][j] == ""..today then
-                    s = s..'<span weight="bold" color="#95f795">'..string.format("%02d", weeks[i][j])..'</span> '
+                local d = string.format("%02d", weeks[i][j])
+                if d == today then
+                    s = s..'<span weight="bold" color="#95f795">'..d..'</span>'
                     w = true
                 else
-                    s = s..string.format("%02d ", weeks[i][j])
+                    s = s..d
                 end
+                s = s.." "
             end
         end
 
@@ -689,6 +691,9 @@ awful.rules.rules = {
     { rule = { class = "Chromium" },
       properties = { tag = tags[1][1] } },
 
+    { rule = { class = "Iceweasel" },
+      properties = { tag = tags[1][1] } },
+
     { rule = { class = "Spotify" },
       properties = { tag = tags[2][4] } },
 
@@ -720,6 +725,8 @@ awful.rules.rules = {
     { rule = { class = "VirtualBox", instance = "Qt-subapplication" },
       properties = { tag = tags[1][5] } },
 
+    { rule = { class = "Transmission" },
+      properties = { tag = tags[1][9] } },
 }
 -- }}}
 

@@ -52,6 +52,11 @@ icedove >/dev/null 2>&1 &
 echo "starting google chromium..."
 exec chromium >/dev/null 2>&1 &
 
+echo "starting games..."
+echo "TODO"
+# sol >/dev/null 2>&1 &
+# mahjong >/dev/null 2>&1 &
+
 echo "starting emacs..."
 exec emacs &
 
@@ -59,15 +64,14 @@ echo "starting spotify..."
 exec spotify >/dev/null 2>&1 &
 
 echo "starting virtualbox..."
-echo "TODO"
-#exec virtualbox >/dev/null 2>&1 &
+exec virtualbox >/dev/null 2>&1 &
 
 echo "starting update notification daemon..."
 echo "TODO"
 #exec update-notifier &
 
-echo "starting awesome..."
-exec awesome
+# echo "starting awesome..."
+# exec awesome
 
 echo "all done!"
 echo ""

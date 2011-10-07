@@ -46,7 +46,7 @@ exec urxvt -sb -name top -e "htop" &
 # echo "starting alpine..."
 # exec urxvt -sb -name mail -e "alpine" &
 
-echo "starting ocedove..."
+echo "starting icedove..."
 icedove >/dev/null 2>&1 &
 
 echo "starting google chromium..."
@@ -65,6 +65,9 @@ exec emacs &
 
 # echo "starting virtualbox..."
 # exec virtualbox >/dev/null 2>&1 &
+
+echo "starting transmission..."
+exec transmission >/dev/null 2>&1 &
 
 echo "starting update notification daemon..."
 echo "TODO"

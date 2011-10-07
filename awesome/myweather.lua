@@ -126,11 +126,18 @@ local function get_weather(data)
     -- }
     -- weather_icon = confdir.."/weather_icons/"..icons[weather_title]..".png"
 
-    local weather_icon_name = weather_icon:match(".+/(.+[dn].png)")
-    weather_icon = confdir.."/myweather_icons/weather/"..weather_icon_name
-
+    local weather_icon_name = weather_icon:match(".+/(.+[dn]w?.png)")
+    if weather_icon_name ~= nil then
+        weather_icon = confdir.."/myweather_icons/weather/"..weather_icon_name
+    else
+        weather_icon = nil
+    end
     local wind_dir_icon_name = weather_wind_dir_icon:match(".+/(...\.png)")
-    weather_wind_dir_icon = confdir.."/myweather_icons/directions/"..wind_dir_icon_name
+    if wind_dir_icon_name ~= nil then
+        weather_wind_dir_icon = confdir.."/myweather_icons/directions/"..wind_dir_icon_name
+    else
+        weather_wind_dir_icon = nil
+    end
 
     -- TODO: Split the wind speed into value and unit
     --weather_wind_speed, weather_wind_unit = weather_wind_speed:match("(.+) (.+)")
@@ -140,10 +147,14 @@ local function get_weather(data)
     -- print("    Temp: "..weather_temp)
     -- print("    Wind: "..weather_wind_speed.." (dir. icon "..weather_wind_dir_icon..")")
 
-    data[2].weather.image   = capi.image(weather_icon)
+    if weather_icon ~= nil then
+        data[2].weather.image   = capi.image(weather_icon)
+    end
     data[2].temp.text       = '<span font="monospace">'..weather_temp..'</span>'
     data[2].wind_speed.text = '<span font="monospace">'..weather_wind_speed..'</span>'
-    data[2].wind_dir.image  = capi.image(weather_wind_dir_icon)
+    if weather_wind_dir_icon ~= nil then
+        data[2].wind_dir.image  = capi.image(weather_wind_dir_icon)
+    end
 end
 
 -- Function to create the custom widget

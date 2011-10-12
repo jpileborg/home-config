@@ -52,8 +52,7 @@ icedove >/dev/null 2>&1 &
 echo "starting google chromium..."
 exec chromium >/dev/null 2>&1 &
 
-echo "starting games..."
-echo "TODO"
+# echo "starting games..."
 # sol >/dev/null 2>&1 &
 # mahjong >/dev/null 2>&1 &
 
@@ -69,12 +68,8 @@ exec emacs &
 echo "starting transmission..."
 exec transmission >/dev/null 2>&1 &
 
-echo "starting update notification daemon..."
-echo "TODO"
-#exec update-notifier &
-
-# echo "starting awesome..."
-# exec awesome
+# echo "starting update notification daemon..."
+# exec update-notifier &
 
 echo "all done!"
 echo ""

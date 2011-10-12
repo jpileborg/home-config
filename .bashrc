@@ -23,7 +23,7 @@ HISTFILESIZE=20000
 shopt -s checkwinsize
 
 # make less more friendly for non-text input files, see lesspipe(1)
-#[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 # set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
@@ -58,9 +58,17 @@ function prompt_error_code() {
     fi;
 }
 
+function parse_git_branch() {
+    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(git:\1)/';
+}
+
+function parse_hg_branch() {
+    hg branch 2>&1 | sed -e '/^abort/d' -e 's/.*/(hg:\0)/'
+}
+
 if [ "$color_prompt" = yes ]; then
     # PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-    PS1='\[\033[1m\]$(prompt_error_code)\[\033[0m\]${debian_chroot:+($debian_chroot)}[\[\033[01;34m\]\w\[\033[0m\]]\$ '
+    PS1='\[\033[1m\]$(prompt_error_code)$(parse_git_branch)$(parse_hg_branch)\[\033[0m\]${debian_chroot:+($debian_chroot)}[\[\033[01;34m\]\w\[\033[0m\]]\$ '
 else
     # PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
     PS1='$(prompt_error_code)${debian_chroot:+($debian_chroot)}[\w\]\$ '
@@ -132,5 +140,6 @@ export GIT_EDITOR=nano
 
 # complete -W "`find $HOME/products/*/* -maxdepth 0 -type d | cut -d '/' -f 5-6`" chp
 
-# export LESSOPEN="| /usr/bin/lesspipe %s";
-# export LESSCLOSE="/usr/bin/lesspipe %s %s";
+export LESSOPEN="| /usr/bin/lesspipe %s";
+export LESSCLOSE="/usr/bin/lesspipe %s %s";
+export LESS=" -M -R "

@@ -242,6 +242,9 @@ function get_mail_count()
     local _, _, messages = mails:find("MESSAGES ([0-9]+)")
     local _, _, unread   = mails:find("UNSEEN ([0-9]+)")
 
+    if messages == nil then messages = '<span color="#ffa6a6">0</span>' end
+    if unread   == nil then unread   = '<span color="#ffa6a6">0</span>' end
+
     if unread ~= "0" then
         unread = '<span color="#a6e6a6" weight="bold">'..unread..'</span>'
     end
@@ -253,7 +256,6 @@ mailwidget.text = get_mail_count()
 mailwidget:buttons(awful.util.table.join(
 					  awful.button({ }, 1, function () mailwidget.text = get_mail_count() end)
 			  ))
-
 
 mailwidgettimer = timer({ timeout = 60 })
 mailwidgettimer:add_signal("timeout", function() mailwidget.text = get_mail_count() end)

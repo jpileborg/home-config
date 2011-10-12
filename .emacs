@@ -294,7 +294,7 @@
    (concat
 	"/* -*- coding: utf-8 -*- */\n"
     "/* *******************************************************************\n"
-	"* File:                                            Part of The Raven *\n"
+	"* File:                                                Part of spotd *\n"
 	"*                                                                    *\n"
 	"* Copyright (C) 2011, Joachim Pileborg and individual contributors.  *\n"
 	"* All rights reserved.                                               *\n"
@@ -329,15 +329,15 @@
 	"*                                                                    *\n"
 	"******************************************************************* */\n"
 	"\n"
-	"#include \"raven.h\"\n"
+	"#include \"spotd.h\"\n"
 	"\n"
-	"namespace raven {\n"
-	"\n"
-	"/* **************************************************************** */\n"
+	"namespace spotd {\n"
 	"\n"
 	"/* **************************************************************** */\n"
 	"\n"
-	"} /* namespace raven */\n"
+	"/* **************************************************************** */\n"
+	"\n"
+	"} // namespace spotd\n"
     )
    )
   )
@@ -347,12 +347,11 @@
   (interactive)
   (insert
    (concat
-	"/* -*- C++ -*- */\n"
-	"/* -*- coding: utf-8 -*- */\n"
+	"/* -*- mode: C++; coding: utf-8 -*- */\n"
 	"#ifndef ___H__\n"
 	"#define ___H__ 1\n"
     "/* *******************************************************************\n"
-	"* File:                                            Part of The Raven *\n"
+	"* File:                                                Part of spotd *\n"
 	"*                                                                    *\n"
 	"* Copyright (C) 2011, Joachim Pileborg and individual contributors.  *\n"
 	"* All rights reserved.                                               *\n"
@@ -387,13 +386,13 @@
 	"*                                                                    *\n"
 	"******************************************************************* */\n"
 	"\n"
-	"namespace raven {\n"
+	"namespace spotd {\n"
 	"\n"
     "/* **************************************************************** */\n"
 	"\n"
     "/* **************************************************************** */\n"
 	"\n"
-	"} /* namespace raven */\n"
+	"} // namespace spotd\n"
 	"\n"
 	"#endif /* ___H__ */\n"
     )
@@ -643,6 +642,7 @@ x   )
 
 (define-key global-map "\C-c\C-c" 'comment-region)
 (define-key global-map "\C-c\C-u" 'uncomment-region)
+(define-key global-map "\C-cu" 'uncomment-region)
 
 ;; TODO: Make sure the server is not started before attempting to start it
 ;(server-start)
